@@ -1,5 +1,5 @@
 ## create vlan
-```
+```bash
 sudo vi /etc/netplan/02-vlan.yaml
 ```
 ```yaml
@@ -12,13 +12,13 @@ network:
         addresses:
         - 192.168.100.1/24
 ```
-```
+```bash
 sudo netplan generate
 sudo netplan apply
 ```
 
 ## install k3s
-```
+```bash
 export EXTERNAL_IP=""
 export INTERNAL_IP=""
 export INTERNAL_INTERFACE="eth1"
@@ -26,22 +26,22 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--flannel-iface=$INTERNAL_INTER
 ```
 
 ## copy kubeconfig to the right place
-```
+```bash
 sudo cp /etc/rancher/k3s/k3s.yaml .kube/config
 ```
 
 ## check node
-````
+```bash
 kubectl get node -o wide
-````
+```
 
 ## get node token (set it as TOKEN environment variable on worker node)
-```
+```bash
 cat /var/lib/rancher/k3s/server/node-token
 ```
 
 ## ufw rules
-```
+```bash
 sudo ufw allow ssh comment "SSH"
 sudo ufw allow http comment "HTTP"
 sudo ufw allow https comment "HTTPS"
@@ -53,7 +53,7 @@ sudo ufw enable
 ```
 
 ## add cert manager
-```
+```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 ```
 
@@ -79,7 +79,7 @@ spec:
         ingress:
           class: traefik
 ```
-```
+```bash
 kubectl apply -f letsencrypt-staging.yaml
 ```
 
@@ -105,6 +105,6 @@ spec:
         ingress:
           class: traefik
 ```
-```
+```bash
 kubectl apply -f letsencrypt-prod.yaml
 ```

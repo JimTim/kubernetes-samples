@@ -1,5 +1,5 @@
 ## create vlan
-```
+```bash
 sudo vi /etc/netplan/02-vlan.yaml
 ```
 ```yaml
@@ -12,13 +12,13 @@ network:
         addresses:
         - 192.168.100.2/24
 ```
-```
+```bash
 sudo netplan generate
 sudo netplan apply
 ```
 
 ## install k3s
-```
+```bash
 export EXTERNAL_IP_MANAGER=""
 export EXTERNAL_IP=""
 export INTERNAL_IP=""
@@ -28,7 +28,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https://$EXTERNAL_IP_MANAGER:6443 K3S_TOK
 ```
 
 ## ufw rules
-```
+```bash
 sudo ufw allow ssh comment "SSH"
 sudo ufw allow http comment "HTTP"
 sudo ufw allow https comment "HTTPS"
