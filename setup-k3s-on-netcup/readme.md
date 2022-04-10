@@ -1,0 +1,1 @@
+In more detail, everything can be found at https://nerdware.de/k3s-und-netcup/. However, it is only documented in German there. If there is a need to translate it into English, I will do so. Just open a ticket here and contact me.
