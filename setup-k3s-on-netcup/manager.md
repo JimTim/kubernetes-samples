@@ -1,3 +1,8 @@
+## set hostname
+```bash
+sudo hostnamectl set-hostname k8s-manager
+```
+
 ## create vlan
 ```bash
 sudo vi /etc/netplan/02-vlan.yaml
@@ -15,6 +20,12 @@ network:
 ```bash
 sudo netplan generate
 sudo netplan apply
+```
+
+## update /etc/hosts
+```bash
+echo "192.168.100.1 k8s-manager" >> /etc/hosts
+echo "192.168.100.2 k8s-worker" >> /etc/hosts
 ```
 
 ## install k3s
